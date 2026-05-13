@@ -1,829 +1,1344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biki Dutta's Portfolio</title>
-  <link href="./images/styles.css" rel="stylesheet">
-  <!-- Link to FontAwesome CDN for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biki Dutta — Data Quality Engineer & Full-Stack Developer</title>
+  <meta name="description" content="Biki Dutta — Data Quality Engineer at Borde, Inc. Full-Stack Developer. MCA from Jorhat Engineering College. Computer vision, model training, scalable web apps." />
+  <meta name="author" content="Biki Dutta" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:title" content="Biki Dutta — Data Quality Engineer & Full-Stack Developer" />
+  <meta property="og:description" content="Building computer vision systems and scalable web applications. Based in Assam, India." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://biki97.github.io/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    /* Basic Styles */
+    :root {
+      --ink: #0E0E10;
+      --ink-soft: #1A1A1F;
+      --ink-line: #2A2A30;
+      --paper: #F6F2EA;
+      --amber: #E8743C;
+      --amber-glow: rgba(232, 116, 60, 0.15);
+      --amber-soft: #F3A874;
+      --text: #F6F2EA;
+      --text-dim: #9C9CA3;
+      --text-muted: #6E6E76;
+      --success: #22C55E;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Manrope', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      --max-w: 1280px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #000000; /* Background Color */
-      color: #F5F5F5; /* Primary Text */
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--amber); color: var(--ink); }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      opacity: 0.4;
+      z-index: 999;
+      mix-blend-mode: overlay;
     }
 
-    h1, h2 {
-      color: #FF6500; /* Accent Color */
-    }
-
-    a {
-      color: #FF6500; /* Accent Color */
-      text-decoration: none;
-      position: relative;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-
-    /* Navbar */
     nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem var(--gutter);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(14, 14, 16, 0.7);
+      border-bottom: 1px solid var(--ink-line);
       display: flex;
+      align-items: center;
       justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      display: flex;
       align-items: center;
-      padding: 20px;
-      /*background-color: #0B192C; !* Highlight Color *!*/
-      /*border-bottom: 2px solid #1E3E62; !* Secondary Accent Color *!*/
-
+      gap: 0.6rem;
     }
-    nav .logo img {
-      width: 150px; /* Set a width */
-      height: auto; /* Maintain aspect ratio */
-    }
-
-
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #FF6500;
-    }
-
-    nav .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-
-    }
-
-    nav .nav-links li a {
-      color: #FF6500;
-      font-size: 1rem;
-      padding: 5px 0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      animation: slideInFromRight 1s ease-out forwards; /* Add animation */
-    }
-
-    /* Hover Effect with Animation */
-    nav .nav-links li a:hover {
-      color: #ffffff; /* Yellow for hover effect */
-      text-shadow: 0 0 10px #1E3E62, 0 0 20px #1E3E62, 0 0 30px #1E3E62; /* Glowing effect */
-      transform: scale(1.2); /* Grow effect */
-      opacity: 1; /* Make the link fully visible */
-    }
-
-    /* Hamburger Menu */
-    nav .hamburger {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    /* Banner Section */
-    #banner {
-      position: relative;
-      width: 100%;
-      height: 60vh; /* Reduce the height to 60% of the viewport height */
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #F5F5F5;
-    }
-    /* Transparent Overlay */
-    #banner::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7); /* Black with 50% opacity */
-      z-index: 0; /* Ensures it stays below the content but above the video */
-    }
-    /* Video Background */
-    .banner-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensures the video covers the entire banner area */
-      z-index: -1; /* Places the video behind the content */
-    }
-
-    /* Banner Content */
-    .banner-content {
-      position: relative;
-      z-index: 1; /* Ensures the content appears above the video */
-      text-align: center;
-    }
-
-    #banner h1 {
-      font-size: 2.5rem; /* Adjust font size for reduced height */
-      margin-bottom: 10px;
-      color: #FF6500; /* Accent Color */
-    }
-
-    /* About Section */
-    #about {
-      background-color: #000000; /* Dark Blue */
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .section-icon {
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-
-    .about-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 2px solid #1E3E62; /* Secondary Accent Color */
-      border-radius: 10px;
-      background: linear-gradient(145deg, #0B192C, #1E3E62); /* Gradient Background */
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover transition */
-      animation: fadeIn 1s ease-out; /* Entrance animation */
-    }
-
-    /* Text inside the about-content */
-    .about-content {
-      color: #F5F5F5; /* Primary Text */
-      font-size: 1.0rem;
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    /* Hover Effect */
-    .about-container:hover {
-      transform: scale(1.05); /* Slight grow */
-      box-shadow: 0 10px 20px rgba(255, 101, 0, 0.7); /* Orange glow */
-    }
-
-    /* Custom Animation for Entrance */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* General Styles */
-    .projects-section {
-      padding: 4rem 2rem;
-      background-color: #0c0c0c;
-      color: #f5f5f5;
-      overflow: hidden;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #ff6500;
-    }
-
-    /* Project Wrapper */
-    .projects-wrapper {
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding: 2rem 0;
-    }
-    .project-layer:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    /* Project Layers */
-    .project-layer {
-      position: relative;
-      flex: 0 0 calc(100% - 4rem);
-      max-width: 400px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, #1e3e62, #0b192c);
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      transform: translateX(50px);
-      opacity: 0;
-      animation: fadeInLeft 1s ease forwards;
-    }
-    .project-layer:hover .project-content {
-      background-color: #1e2a3d;
-    }
-    .project-layer:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .project-layer:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    /* Project Content */
-    .project-content {
-      padding: 1.5rem;
-    }
-
-    .project-content h3 {
-      font-size: 1.8rem;
-      color: #ff6500;
-    }
-
-    .project-content p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #a9a9a9;
-      margin-top: 0.5rem;
-    }
-
-    /* Project Link */
-    /* General Styles */
-    .projects-section {
-      padding: 4rem 2rem;
-      background-color: #0c0c0c;
-      color: #f5f5f5;
-      overflow: hidden;
-    }
-
-    .section-title {
-      text-align: left;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #ff6500;
-      padding-left: 2rem;
-    }
-
-    /* Projects Wrapper */
-    .projects-wrapper {
-      position: relative;
-      padding-right: 2rem;
-    }
-
-    /* Project Layer */
-    .project-layer {
-      position: relative;
-      max-width: 400px;
-      margin: 1rem 0;
-      margin-left: auto;
-      background: linear-gradient(135deg, #1e3e62, #0b192c);
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      transform: translateX(100px);
-      animation: slideInRight 1s ease forwards;
-    }
-
-    .project-layer:nth-child(2) {
-      margin-top: -50px; /* Layered effect */
-      animation-delay: 0.2s;
-    }
-
-    .project-layer:nth-child(3) {
-      margin-top: -50px; /* Layered effect */
-      animation-delay: 0.4s;
-    }
-
-    /*!* Project Content *!*/
-    /*.project-content {*/
-    /*  padding: 1.5rem;*/
-    /*}*/
-    /* Project Content */
-    .project-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    /* Project Icon */
-    .project-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50px;
-      height: 50px;
-      background-color: #0b192c;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .project-icon img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .project-content h3 {
-      font-size: 1.8rem;
-      color: #ff6500;
-    }
-
-    .project-content p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #a9a9a9;
-      margin-top: 0.5rem;
-    }
-
-    /* Keyframes */
-    @keyframes slideInRight {
-      0% {
-        opacity: 0;
-        transform: translateX(100px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    /*technologycss*/
-    #technologies {
-      background-color: #0b192c; /* Very Dark Blue */
-      padding: 60px 0;
-      color: #fff;
-    }
-
-    .section-header {
-      font-size: 2rem;
+    .logo-mark {
+      width: 32px; height: 32px;
+      background: var(--amber);
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
       font-weight: 700;
-      text-align: center;
-      margin-bottom: 40px;
-      color: #ff6500; /* Accent Color */
+      font-family: var(--font-mono);
+      transform: rotate(-3deg);
+      transition: transform .3s ease;
+    }
+    .logo:hover .logo-mark { transform: rotate(3deg) scale(1.05); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      transition: color .2s ease;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      height: 1px;
+      width: 0;
+      background: var(--amber);
+      transition: width .3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .resume-btn {
+      padding: 0.6rem 1.1rem;
+      background: var(--amber);
+      color: var(--ink) !important;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: transform .2s ease, box-shadow .3s ease;
+    }
+    .resume-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--amber-glow);
+    }
+    .resume-btn::after { display: none !important; }
+    .mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 1.5rem; background: var(--ink); border-bottom: 1px solid var(--ink-line); gap: 1.25rem; }
+      .nav-links.open { display: flex; }
+      .mobile-toggle { display: block; }
     }
 
-    .section-icon {
-      margin-right: 10px;
+    .hero {
+      min-height: 100vh;
+      padding: 8rem var(--gutter) 4rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
     }
-
-    .tech-container {
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232, 116, 60, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 116, 60, 0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%);
+    }
+    .hero-glow {
+      position: absolute;
+      width: 60vw; height: 60vw;
+      max-width: 800px; max-height: 800px;
+      background: radial-gradient(circle, var(--amber-glow) 0%, transparent 60%);
+      top: 10%; right: -10%;
+      filter: blur(60px);
+      animation: drift 20s ease-in-out infinite alternate;
+    }
+    @keyframes drift { to { transform: translate(-50px, 50px) scale(1.1); } }
+    .hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s .2s ease forwards;
+    }
+    .hero-meta .dot, .pulse-dot {
+      width: 8px; height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--success);
+      animation: pulse 2s ease-in-out infinite;
+      display: inline-block;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-variation-settings: "opsz" 144;
+      font-size: clamp(3rem, 9vw, 8rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 1s .4s ease forwards;
+    }
+    .hero h1 em { font-style: italic; font-weight: 400; color: var(--amber); }
+    .hero h1 .line { display: block; overflow: hidden; }
+    .hero-sub {
+      max-width: 640px;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      line-height: 1.55;
+      opacity: 0;
+      animation: fadeUp 1s .6s ease forwards;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-cta {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-    }
-
-    .tech-item {
-      background-color: #1b1a55; /* Deep Blue */
-      padding: 30px 20px;
-      text-align: center;
-      border-radius: 12px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      width: 150px;
-      height: 180px;
+      gap: 1rem;
       opacity: 0;
-      transform: translateY(50px);
-      animation: fadeInUp 0.8s forwards;
+      animation: fadeUp 1s .8s ease forwards;
     }
-
-    .tech-item:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-
-    .tech-item:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .tech-item:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    .tech-item:nth-child(4) {
-      animation-delay: 0.8s;
-    }
-
-    .tech-item:nth-child(5) {
-      animation-delay: 1s;
-    }
-
-    .tech-item:nth-child(6) {
-      animation-delay: 1.2s;
-    }
-
-    .tech-item:nth-child(7) {
-      animation-delay: 1.4s;
-    }
-
-    .tech-item:nth-child(8) {
-      animation-delay: 1.6s;
-    }
-
-    .tech-item:nth-child(9) {
-      animation-delay: 1.8s;
-    }
-
-    .tech-item:nth-child(10) {
-      animation-delay: 2s;
-    }
-
-    .tech-item:nth-child(11) {
-      animation-delay: 2.2s;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .tech-item:hover {
-      transform: translateY(-10px);
-      background-color: #ff6500; /* Hover color */
-    }
-
-    .tech-icon {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .tech-item:hover .tech-icon {
-      transform: scale(1.2);
-    }
-
-    .tech-item p {
-      font-size: 1.1rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.6rem;
+      border-radius: 100px;
       font-weight: 600;
-      color: #fff;
-      margin-top: 15px;
+      font-size: 0.95rem;
+      transition: transform .25s ease, box-shadow .3s ease, background .2s ease;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
     }
-
-    /* Social Links Section */
-    /* Contact Section */
-    #contact {
-      background-color: #0C0C0C;
-      padding: 40px 20px;
-      text-align: center;
-      color: #F5F5F5;
+    .btn-primary { background: var(--amber); color: var(--ink); }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px var(--amber-glow);
     }
-    .contact-icon {
-      vertical-align: middle;
-      margin-right: 10px;
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--ink-line);
     }
-
-    #contact h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
+    .btn-ghost:hover { border-color: var(--text); transform: translateY(-3px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Contact Icons */
-    #contact {
-      text-align: center;
-      padding: 60px 0;
-    }
-
-    .contact-icons {
+    .hero-tags {
+      position: absolute;
+      bottom: 4rem;
+      right: var(--gutter);
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 20px;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0;
+      animation: fadeUp 1s 1.2s ease forwards;
     }
+    .hero-tags span {
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--ink-line);
+      border-radius: 100px;
+      background: rgba(26, 26, 31, 0.6);
+      backdrop-filter: blur(10px);
+    }
+    @media (max-width: 768px) { .hero-tags { display: none; } }
 
-    .contact-icon-link {
+    section {
+      padding: 6rem var(--gutter);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .section-title em { font-style: italic; color: var(--amber-soft); }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .about-text p {
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-text .highlight { color: var(--amber); font-style: italic; font-family: var(--font-display); }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .stat-card {
+      padding: 1.5rem;
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-line);
+      border-radius: 12px;
+      transition: transform .3s ease, border-color .3s ease;
+    }
+    .stat-card:hover { transform: translateY(-4px); border-color: var(--amber); }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--text-dim); }
+
+    .activity {
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-line);
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .activity { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.75rem; }
+    }
+    .activity-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+    }
+    .activity-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .activity-list li {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1rem;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--ink-line);
+    }
+    .activity-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    @media (max-width: 600px) {
+      .activity-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+    .activity-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding-top: 0.15rem;
+    }
+    .activity-text strong { color: var(--text); font-weight: 500; }
+
+    .timeline {
       position: relative;
-      display: inline-block;
+      padding-left: 2rem;
+      border-left: 1px solid var(--ink-line);
     }
-
-    .contact-icon-img {
-      width: 50px;
-      height: 50px;
+    .timeline-item { padding-bottom: 3rem; position: relative; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      padding: 10px;
-      background-color: #f5f5f5;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      background: var(--amber);
+      box-shadow: 0 0 0 4px var(--ink), 0 0 16px var(--amber-glow);
+    }
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+    .timeline-company {
+      font-size: 0.95rem;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+    .timeline-desc {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.65;
     }
 
-    .contact-icon-img:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      background-color: #ff6500;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
     }
-
-    .contact-header {
-      font-size: 2rem;
-      font-weight: 700;
+    .project {
+      position: relative;
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s ease;
+      cursor: pointer;
       display: flex;
+      flex-direction: column;
+    }
+    .project::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--amber-glow), transparent 60%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .project:hover { transform: translateY(-6px); border-color: var(--amber); }
+    .project:hover::after { opacity: 1; }
+    .project-visual {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--ink);
+      border-bottom: 1px solid var(--ink-line);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+    .project-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+    .project-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+    .project-desc {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .project-stack span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--ink-line);
+      border-radius: 100px;
+      color: var(--text-dim);
+    }
+    .visual-evat { background: linear-gradient(135deg, #1A1A1F 0%, #0E2A2A 100%); }
+    .visual-ecom { background: linear-gradient(135deg, #1A1A1F 0%, #2A1A1F 100%); }
+    .visual-vote { background: linear-gradient(135deg, #1A1A1F 0%, #2A2A1A 100%); }
+    .visual-icon {
+      width: 60%;
+      height: 60%;
+      opacity: 0.9;
+      transition: transform .5s cubic-bezier(.2,.8,.2,1);
+    }
+    .project:hover .visual-icon { transform: scale(1.08) rotate(-2deg); }
+
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .skill-category h3 {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--ink-line);
+    }
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .skill-list li {
+      font-size: 0.95rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .skill-list li::before { content: '◆'; color: var(--amber); font-size: 0.6rem; }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .blog-card {
+      padding: 2rem;
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-line);
+      border-radius: 16px;
+      transition: transform .4s cubic-bezier(.2,.8,.2,1), border-color .3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card:hover { transform: translateY(-6px); border-color: var(--amber); }
+    .blog-card .read-arrow {
+      position: absolute;
+      top: 2rem; right: 2rem;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity .3s ease, transform .3s ease;
+      color: var(--amber);
+    }
+    .blog-card:hover .read-arrow { opacity: 1; transform: translateX(0); }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .blog-meta .tag {
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--ink-line);
+      border-radius: 100px;
+      color: var(--amber);
+    }
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+      line-height: 1.25;
+    }
+    .blog-excerpt { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    .contact-left h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .contact-left h2 em { font-style: italic; color: var(--amber); }
+    .contact-left > p {
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .contact-left > p strong { color: var(--text); font-weight: 500; }
+    .contact-direct {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    .contact-direct a {
+      color: var(--text-dim);
+      transition: color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .contact-direct a:hover { color: var(--amber); }
+    .contact-direct a svg { width: 14px; height: 14px; }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-line);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .field input, .field textarea {
+      background: var(--ink);
+      border: 1px solid var(--ink-line);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      transition: border-color .2s ease, background .2s ease;
+      resize: vertical;
+    }
+    .field textarea { min-height: 120px; line-height: 1.5; }
+    .field input:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--amber);
+      background: rgba(232,116,60,0.04);
+    }
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--amber);
+      color: var(--ink);
+      border: none;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .3s ease;
+      display: inline-flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 20px;
-      color: #333;
+      gap: 0.6rem;
+      font-family: inherit;
     }
-
-
-    .contact-icon {
-      margin-right: 10px;
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px var(--amber-glow);
     }
-
-
-    /* Footer */
-    footer {
-      background-color: #333;
-      color: #fff;
+    .form-note {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
       text-align: center;
-      padding: 20px;
+      margin-top: 0.5rem;
     }
-
-    footer a {
-      color: #FF6500; /* Accent color */
-      text-decoration: none;
-      font-weight: bold;
+    .social-strip { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+    .social-strip a {
+      width: 44px; height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink-line);
+      border-radius: 50%;
+      transition: transform .3s ease, border-color .3s ease, background .3s ease, color .3s ease;
     }
-
-    footer a:hover {
-      color: #ffffff; /* Link hover effect */
-
+    .social-strip a:hover {
+      transform: translateY(-3px) rotate(-5deg);
+      border-color: var(--amber);
+      background: var(--amber);
+      color: var(--ink);
     }
+    .social-strip svg { width: 18px; height: 18px; }
 
-
-    /* Media Queries */
-    @media (max-width: 768px) {
-      nav .nav-links {
-        display: none;
-        width: 100%;
-        text-align: center;
-      }
-
-      nav .hamburger {
-        display: block;
-      }
-
-      nav .hamburger.active + .nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+    footer {
+      padding: 2rem var(--gutter);
+      border-top: 1px solid var(--ink-line);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
     }
-    /* Keyframes for sliding in from the right */
-    @keyframes slideInFromRight {
-      0% {
-        transform: translateX(100%); /* Start from right */
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0); /* End at normal position */
-        opacity: 1;
-      }
+    footer span { color: var(--amber); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(14, 14, 16, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 5rem 1.5rem 3rem;
+      overflow-y: auto;
+    }
+    .modal.open { display: flex; }
+    .modal-inner {
+      width: 100%;
+      max-width: 760px;
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-line);
+      border-radius: 20px;
+      padding: 3rem;
+      position: relative;
+    }
+    @media (max-width: 600px) { .modal-inner { padding: 2rem 1.5rem; } }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: 1px solid var(--ink-line);
+      color: var(--text);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, color .2s ease;
+    }
+    .modal-close:hover { border-color: var(--amber); background: var(--amber); color: var(--ink); }
+    .modal-meta {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .modal-meta .tag {
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--ink-line);
+      border-radius: 100px;
+      color: var(--amber);
+    }
+    .modal h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .modal-body p {
+      color: var(--text-dim);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .modal-body p strong { color: var(--text); font-weight: 500; }
+    .modal-body h2 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin: 2rem 0 1rem;
+      color: var(--text);
+    }
+    .modal-body ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .modal-body ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-dim);
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .modal-body ul li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-size: 0.65rem;
+      top: 0.5rem;
+    }
+    .modal-body code {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      background: var(--ink);
+      border: 1px solid var(--ink-line);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      color: var(--amber-soft);
     }
   </style>
 </head>
-
 <body>
 
-<!-- Navbar -->
-<nav>
-  <div class="logo">BIKI DUTTA</div>
-  <ul class="nav-links">
-<!--    <li><a href="#banner">Home</a></li>-->
-<!--    <li><a href="#about">About Me</a></li>-->
-<!--    <li><a href="#projects">Projects</a></li>-->
-<!--    <li><a href="#contact">Contact</a></li>-->
-  </ul>
-  <div class="hamburger" id="hamburger">
-    &#9776;
-  </div>
-</nav>
+  <nav>
+    <a href="#top" class="logo">
+      <span class="logo-mark">B</span>
+      <span>biki.dutta</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+      <a href="Biki_Dutta_DataQuality_Engineer_Resume.pdf" class="resume-btn" download>Resume ↓</a>
+    </div>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </nav>
 
-<!-- Banner Section -->
-<section id="banner">
-  <video autoplay loop muted playsinline class="banner-video">
-    <source src="coding.mp4" type="video/mp4">
-    Your browser does not support the video
-  </video>
-  <div class="banner-content">
-    <h1 class="typing-effect"></h1>
-<!--    <p class="typing-effect" style="animation-delay: 2s;">Looking for a Developer? Let’s Collaborate!</p>-->
-  </div>
-</section>
-
-
-<!-- About Me Section -->
-<section id="about" class="about-section">
-  <div class="about-container">
-    <h2>
-      <img src="https://img.icons8.com/ios-filled/40/ff6500/user-male-circle.png" alt="User Icon" class="section-icon">
-      ABOUT ME
-    </h2>
-    <div class="about-content">
-
-      <p class="lead about-text">
-        Hi! I’m <strong>Biki Dutta</strong>, a passionate individual with a journey marked by determination and continuous learning.
-
-        I earned a BSc in IT in 2018, followed by working as a Data Entry Operator Team Leader at Jorhat Medical College and under Inland Water Transport (IWT). In 2022, I resumed my academic pursuits, cleared JMEE, and completed an MCA from Jorhat Engineering College in 2024.
-
-        During my MCA, I interned at the National Informatics Center, Shillong, as a Full-Stack Developer, honing skills in software development and problem-solving.
-
-        My journey reflects a belief in adaptability and growth, and I am eager to contribute to impactful projects and embrace new challenges.
+  <header class="hero" id="top">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-meta">
+        <span class="dot"></span>
+        <span>Available for opportunities · Based in Assam, India</span>
+      </div>
+      <h1>
+        <span class="line">Building <em>reliable</em></span>
+        <span class="line">systems with</span>
+        <span class="line">clean <em>data</em>.</span>
+      </h1>
+      <p class="hero-sub">
+        I'm <strong>Biki Dutta</strong> — a Data Quality Engineer at <strong>Borde, Inc.</strong> training computer-vision models for food-tech, and a full-stack developer with a Spring Boot &amp; PostgreSQL background. I care about clean data, clean code, and shipping things that work.
       </p>
-    </div>
-  </div>
-</section>
-
-<section id="projects" class="projects-section">
-  <h2 class="section-title">
-    <img src="https://img.icons8.com/ios-filled/40/ff6500/project-management.png" alt="Projects Icon" class="section-icon-inline">
-    Projects
-  </h2>
-  <div class="projects-wrapper">
-    <!-- Project 1 -->
-    <div class="project-layer">
-      <div class="project-content">
-        <div class="project-icon">
-          <img src="https://img.icons8.com/ios-filled/24/ff6500/taxes.png" alt="Tax Icon" class="project-icon-inline">
-        </div>
-        <h3>E-VAT Return System</h3>
-        <p>An electronic VAT return system where merchants can file their returns online. Built with Spring Boot, Thymeleaf, and PostgreSQL.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          See my work
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
       </div>
     </div>
+    <div class="hero-tags">
+      <span>Java · Spring Boot</span>
+      <span>Python · Computer Vision</span>
+      <span>YOLO · Roboflow · AWS</span>
+    </div>
+  </header>
 
-    <!-- Project 2 -->
-    <div class="project-layer">
-      <div class="project-content">
-        <div class="project-icon">
-          <img src="https://img.icons8.com/ios-filled/50/ff6500/shopping-cart.png" alt="Shopping Cart Icon">
+  <section id="about" class="reveal">
+    <div class="section-header">
+      <span class="section-num">01 / About</span>
+    </div>
+    <div class="about">
+      <div class="about-text">
+        <h2 class="section-title">A journey of <em>adaptability</em> and continuous learning.</h2>
+        <br>
+        <p>
+          My path hasn't been linear — and that's exactly the point. After finishing my <strong>B.Sc. in IT</strong>, I worked as a <strong>Data Entry Operator and Team Leader</strong> at Jorhat Medical College and Inland Water Transport, where I learned the discipline of working with large, structured datasets at scale.
+        </p>
+        <p>
+          In 2022 I returned to school, cleared <strong>JMEE</strong>, and completed an <strong>MCA from Jorhat Engineering College</strong>. During my MCA, I interned at the <strong>National Informatics Centre, Shillong</strong> as a full-stack developer — building a tax-filing system on Spring Boot and PostgreSQL.
+        </p>
+        <p>
+          Today I work at <strong>Borde, Inc.</strong> as a <span class="highlight">Data Quality Engineer</span> — training image classification models on Roboflow, running inference on production datasets, and turning real-world failure modes into structured improvements for the engineering team.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Vision classes I work with daily</div>
         </div>
-        <h3>E-commerce Android App</h3>
-        <p>A mobile app for online shopping, developed using Flutter and Firebase. Offers a seamless user experience.</p>
+        <div class="stat-card">
+          <div class="stat-num">5K+</div>
+          <div class="stat-label">Annotations contributed to production models</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">End-to-end projects shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Things still left to learn</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Project 3 -->
-    <div class="project-layer">
-      <div class="project-content">
-        <div class="project-icon">
-          <img src="https://img.icons8.com/ios-filled/50/ff6500/vote.png" alt="Vote Icon">
+  <section id="now" class="reveal" style="padding-top: 0;">
+    <div class="activity">
+      <div class="activity-label">
+        <span class="pulse-dot"></span>
+        WHAT I'M UP TO
+      </div>
+      <ul class="activity-list">
+        <li>
+          <span class="activity-tag">Now</span>
+          <span class="activity-text"><strong>Training image classification models</strong> on Roboflow for food-tech production at Borde, Inc.</span>
+        </li>
+        <li>
+          <span class="activity-tag">Learning</span>
+          <span class="activity-text"><strong>Python ML libraries</strong> — NumPy, Pandas, scikit-learn, and PyTorch fundamentals.</span>
+        </li>
+        <li>
+          <span class="activity-tag">Reading</span>
+          <span class="activity-text">Hands-on YOLOv8 training documentation and MLOps best practices.</span>
+        </li>
+        <li>
+          <span class="activity-tag">Next</span>
+          <span class="activity-text">Building my first end-to-end YOLO model from scratch and publishing the journey here.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="section-header">
+      <span class="section-num">02 / Experience</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom: 3rem;">Where I've <em>worked</em>.</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">FEB 2026 — PRESENT</div>
+        <h3 class="timeline-role">Data Quality Engineer</h3>
+        <div class="timeline-company">Borde, Inc. — San Ramon, CA (Remote)</div>
+        <p class="timeline-desc">
+          Training image classification models (CNNs, ResNet, EfficientNet) on Roboflow for food-tech computer vision. Running inference on production datasets, evaluating model outputs, and feeding root-cause analyses back into the training cycle. Managing large-scale data on AWS S3.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">JAN 2024 — JUN 2024</div>
+        <h3 class="timeline-role">Software Development Intern</h3>
+        <div class="timeline-company">National Informatics Centre (NIC) — Shillong</div>
+        <p class="timeline-desc">
+          Built backend modules for an E-VAT Tax Filing System using Core Java, Spring Boot, and PostgreSQL. Designed REST APIs with role-based authentication for vendors, officers, and administrators. Optimized database queries and wrote technical documentation.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2020 — 2022</div>
+        <h3 class="timeline-role">Data Entry Operator → Team Leader</h3>
+        <div class="timeline-company">Jorhat Medical College · Inland Water Transport (IWT)</div>
+        <p class="timeline-desc">
+          Started as a data entry operator handling medical and administrative records, then led a small team coordinating daily workflows and ensuring data accuracy across government records — building the data-quality discipline that drives my work today.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <div class="section-header">
+      <span class="section-num">03 / Projects</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom: 3rem;">Things I've <em>built</em>.</h2>
+
+    <div class="projects-grid">
+      <a href="https://github.com/biki97" class="project" target="_blank" rel="noopener">
+        <div class="project-visual visual-evat">
+          <svg class="visual-icon" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="160" height="100" rx="8" fill="#0E0E10" stroke="#E8743C" stroke-width="2"/>
+            <rect x="35" y="35" width="80" height="8" rx="2" fill="#E8743C" opacity="0.7"/>
+            <rect x="35" y="50" width="130" height="4" rx="2" fill="#9C9CA3" opacity="0.5"/>
+            <rect x="35" y="60" width="100" height="4" rx="2" fill="#9C9CA3" opacity="0.3"/>
+            <rect x="35" y="78" width="60" height="18" rx="3" fill="#E8743C"/>
+            <rect x="105" y="78" width="60" height="18" rx="3" fill="none" stroke="#9C9CA3" stroke-width="1"/>
+            <circle cx="155" cy="35" r="6" fill="#22C55E"/>
+          </svg>
         </div>
-        <h3>Voting Management System</h3>
-        <p>A college election system created using PHP and MySQL to manage and secure voting processes.</p>
+        <div class="project-body">
+          <div class="project-num">01</div>
+          <h3 class="project-title">E-VAT Return System</h3>
+          <p class="project-desc">
+            A secure, role-based electronic VAT filing platform where vendors submit returns and officers review with structured correction notes — reducing paperwork and improving workflow communication.
+          </p>
+          <div class="project-stack">
+            <span>Spring Boot</span><span>PostgreSQL</span><span>Thymeleaf</span><span>REST APIs</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/biki97" class="project" target="_blank" rel="noopener">
+        <div class="project-visual visual-ecom">
+          <svg class="visual-icon" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="60" y="15" width="80" height="100" rx="12" fill="#0E0E10" stroke="#E8743C" stroke-width="2"/>
+            <rect x="68" y="30" width="64" height="40" rx="4" fill="#E8743C" opacity="0.15"/>
+            <circle cx="100" cy="50" r="10" fill="#E8743C"/>
+            <rect x="74" y="78" width="40" height="3" rx="1.5" fill="#9C9CA3"/>
+            <rect x="74" y="86" width="28" height="3" rx="1.5" fill="#9C9CA3" opacity="0.5"/>
+            <rect x="118" y="78" width="14" height="14" rx="3" fill="#E8743C"/>
+            <circle cx="125" cy="103" r="3" fill="#22C55E"/>
+            <rect x="92" y="20" width="16" height="2" rx="1" fill="#9C9CA3" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-num">02</div>
+          <h3 class="project-title">E-Commerce Android App</h3>
+          <p class="project-desc">
+            A cross-platform shopping app featuring product browsing, cart management, and secure checkout. Built with reusable Flutter widgets and real-time data sync via Firebase.
+          </p>
+          <div class="project-stack">
+            <span>Flutter</span><span>Dart</span><span>Firebase</span><span>Firestore</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/biki97" class="project" target="_blank" rel="noopener">
+        <div class="project-visual visual-vote">
+          <svg class="visual-icon" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="35" width="160" height="80" rx="6" fill="#0E0E10" stroke="#E8743C" stroke-width="2"/>
+            <rect x="35" y="50" width="20" height="20" rx="3" fill="none" stroke="#9C9CA3" stroke-width="2"/>
+            <path d="M40 60 L43 64 L52 54" stroke="#E8743C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="65" y="55" width="100" height="3" rx="1.5" fill="#9C9CA3"/>
+            <rect x="65" y="63" width="70" height="3" rx="1.5" fill="#9C9CA3" opacity="0.5"/>
+            <rect x="35" y="85" width="20" height="20" rx="3" fill="none" stroke="#9C9CA3" stroke-width="2"/>
+            <rect x="65" y="90" width="100" height="3" rx="1.5" fill="#9C9CA3"/>
+            <rect x="65" y="98" width="70" height="3" rx="1.5" fill="#9C9CA3" opacity="0.5"/>
+            <path d="M100 15 L110 25 L100 25 L90 25 Z" fill="#E8743C"/>
+            <rect x="97" y="25" width="6" height="10" fill="#E8743C"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-num">03</div>
+          <h3 class="project-title">Voting Management System</h3>
+          <p class="project-desc">
+            A secure web-based college election platform with separate interfaces for voters and administrators, session-based authentication, and transparent result reporting.
+          </p>
+          <div class="project-stack">
+            <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-header">
+      <span class="section-num">04 / Skills</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom: 3rem;">My <em>toolbox</em>.</h2>
+
+    <div class="skills-wrap">
+      <div class="skill-category">
+        <h3>AI / ML</h3>
+        <ul class="skill-list">
+          <li>Image Classification (CNNs)</li>
+          <li>ResNet · EfficientNet</li>
+          <li>YOLO · Object Detection</li>
+          <li>Roboflow · CVAT</li>
+          <li>Model Evaluation</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Backend</h3>
+        <ul class="skill-list">
+          <li>Java · Spring Boot</li>
+          <li>REST APIs</li>
+          <li>Core Java · OOP</li>
+          <li>PostgreSQL · MySQL</li>
+          <li>Authentication & Security</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <ul class="skill-list">
+          <li>HTML5 · CSS3</li>
+          <li>JavaScript · React</li>
+          <li>Thymeleaf · Bootstrap</li>
+          <li>Flutter (Mobile)</li>
+          <li>Responsive Design</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Tools & Cloud</h3>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>AWS S3 (CLI)</li>
+          <li>Git · GitHub</li>
+          <li>Linux / Unix</li>
+          <li>IntelliJ · VS Code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="reveal">
+    <div class="section-header">
+      <span class="section-num">05 / Writing</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom: 3rem;">Notes &amp; <em>writing</em>.</h2>
+
+    <div class="blog-grid">
+      <article class="blog-card" onclick="openArticle('article-1')">
+        <svg class="read-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div class="blog-meta">
+          <span class="tag">AI / ML</span>
+          <span>5 MIN READ</span>
+        </div>
+        <h3 class="blog-title">Why model accuracy isn't enough — the case for macro recall in food-tech vision</h3>
+        <p class="blog-excerpt">
+          When 95% of your dataset is one class, accuracy lies. Here's what I learned about evaluating computer vision models honestly — and why rare classes deserve special attention.
+        </p>
+      </article>
+
+      <article class="blog-card" onclick="openArticle('article-2')">
+        <svg class="read-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div class="blog-meta">
+          <span class="tag">Engineering</span>
+          <span>4 MIN READ</span>
+        </div>
+        <h3 class="blog-title">From Spring Boot to Roboflow — what backend engineering taught me about ML data pipelines</h3>
+        <p class="blog-excerpt">
+          Good ML systems have a lot in common with good REST APIs: clean inputs, validated outputs, and observability you can debug at 2 AM. Here are the parallels I keep noticing.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="section-header">
+      <span class="section-num">06 / Contact</span>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2>Let's <em>build</em> something together.</h2>
+        <p>
+          I'm open to opportunities in <strong>Data Quality Engineering</strong>, <strong>AI/ML data workflows</strong>, and <strong>full-stack development</strong>. Drop a message and I'll get back within a day.
+        </p>
+        <div class="contact-direct">
+          <a href="mailto:bikidutta319@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            bikidutta319@gmail.com
+          </a>
+          <a href="tel:+916003359148">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +91 6003359148
+          </a>
+        </div>
+        <div class="social-strip">
+          <a href="https://www.linkedin.com/in/bikidutta" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://github.com/biki97" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="https://www.instagram.com/duttabiki" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell me a bit about your project, opportunity, or just say hi..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Send message
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-note">Powered by Formspree · Your message goes straight to my inbox</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 BIKI DUTTA · Designed &amp; built with <span>♥</span> in Assam, India</p>
+  </footer>
+
+  <div class="modal" id="article-1">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeArticle('article-1')">×</button>
+      <div class="modal-meta">
+        <span class="tag">AI / ML</span>
+        <span>5 MIN READ · By Biki Dutta</span>
+      </div>
+      <h1>Why model accuracy isn't enough — the case for macro recall in food-tech vision</h1>
+      <div class="modal-body">
+        <p>
+          A few months into my work at Borde, I learned a humbling lesson: <strong>accuracy is the easiest metric to fool yourself with</strong>. If 95% of the dataset is one class, a model that predicts that class for every image will score 95% accuracy — and be completely useless in production.
+        </p>
+        <p>
+          In food-tech computer vision, the stakes are real. A walnut sorting model that misses 80% of <code>Red_Pieces</code> (a rare defect class) still looks great on a confusion matrix dominated by <code>FM_Shell</code> and <code>Light_Pieces</code>. The rare class disappears in the average.
+        </p>
+        <h2>Macro recall vs micro recall</h2>
+        <p>
+          The fix isn't complicated, but it took me a while to internalize it:
+        </p>
+        <ul>
+          <li><strong>Micro recall</strong> — totals true positives and false negatives across all classes. Dominated by majority classes.</li>
+          <li><strong>Macro recall</strong> — computes recall <em>per class</em>, then averages. Every class is treated equally — including the rare ones.</li>
+        </ul>
+        <p>
+          When you actually care about catching every defect type, macro recall is the honest metric. A 95% accuracy model with 30% macro recall is a model that's failing where it matters most.
+        </p>
+        <h2>What I do now</h2>
+        <p>
+          Every time we evaluate a new training run, I look at <em>three</em> things before celebrating: the confusion matrix (where are the off-diagonal errors clustering?), macro recall (are we catching the rare classes?), and false positives per class (where is the model crying wolf?).
+        </p>
+        <p>
+          The model that "looks worse" on overall accuracy but has cleaner per-class recall is almost always the better model to ship. Accuracy is a vanity metric. Recall — broken down by class — is the truth.
+        </p>
       </div>
     </div>
   </div>
-</section>
 
-<!--technology section-->
-<section id="technologies">
-  <h2 class="section-header">
-    Technologies I Know
-  </h2>
-  <div class="tech-container">
-    <!-- Technology 1 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/ff6500/spring-logo.png" alt="Spring Logo" class="tech-icon">
-      <p>Spring Boot</p>
-    </div>
-
-    <!-- Technology 2 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/java.png" alt="Java Logo" class="tech-icon">
-      <p>Java</p>
-    </div>
-
-    <!-- Technology 3 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/python.png" alt="Python Logo" class="tech-icon">
-      <p>Python</p>
-    </div>
-
-    <!-- Technology 4 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/flutter.png" alt="Flutter Logo" class="tech-icon">
-      <p>Flutter</p>
-    </div>
-
-    <!-- Technology 5 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/react-native.png" alt="React Logo" class="tech-icon">
-      <p>React</p>
-    </div>
-
-    <!-- Technology 6 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/javascript.png" alt="JavaScript Logo" class="tech-icon">
-      <p>JavaScript</p>
-    </div>
-
-    <!-- Technology 7 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/postgresql.png" alt="PostgreSQL Logo" class="tech-icon">
-      <p>PostgreSQL</p>
-    </div>
-
-    <!-- Technology 8 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/mysql.png" alt="MySQL Logo" class="tech-icon">
-      <p>MySQL</p>
-    </div>
-
-    <!-- Technology 9 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/php.png" alt="PHP Logo" class="tech-icon">
-      <p>PHP</p>
-    </div>
-
-    <!-- Technology 10 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/html-5.png" alt="HTML5 Logo" class="tech-icon">
-      <p>HTML5</p>
-    </div>
-
-    <!-- Technology 11 -->
-    <div class="tech-item">
-      <img src="https://img.icons8.com/ios-filled/50/000000/css3.png" alt="CSS3 Logo" class="tech-icon">
-      <p>CSS3</p>
+  <div class="modal" id="article-2">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeArticle('article-2')">×</button>
+      <div class="modal-meta">
+        <span class="tag">Engineering</span>
+        <span>4 MIN READ · By Biki Dutta</span>
+      </div>
+      <h1>From Spring Boot to Roboflow — what backend engineering taught me about ML data pipelines</h1>
+      <div class="modal-body">
+        <p>
+          I came to ML data work from a backend internship, where I was building REST APIs in <strong>Spring Boot</strong> on top of PostgreSQL. On the surface, that's nothing like training a CNN on Roboflow. But the deeper I get into ML workflows, the more I notice how much they look like backend systems with extra steps.
+        </p>
+        <h2>Three patterns that carry over</h2>
+        <p>
+          <strong>1. Validation at the edge.</strong> In Spring Boot, you don't trust user input — you validate it before it ever touches business logic. In ML, you don't trust training data — you check class balance, annotation quality, and edge cases before pressing "train." Same instinct, different layer.
+        </p>
+        <p>
+          <strong>2. Idempotent rebuilds.</strong> Good backend systems can rebuild from source. Good ML systems can re-run from the same dataset and produce the same model. Versioning your data (and your data is the actual source) is just <code>git</code> for machine learning.
+        </p>
+        <p>
+          <strong>3. Observability over hope.</strong> When a backend endpoint fails, you have logs, traces, and metrics. When an ML model fails, you have… vibes? Not anymore. Confusion matrices, per-class recall, false-positive breakdowns — these are the production telemetry of an ML system.
+        </p>
+        <h2>Where it gets interesting</h2>
+        <p>
+          The thing backend engineering didn't prepare me for is the <em>fuzziness</em>. A REST endpoint either returns 200 or it doesn't. A model can be "kind of working" — high accuracy, terrible recall on the rare class that actually matters. There's no green build status for "it generalizes well to data we haven't seen yet."
+        </p>
+        <p>
+          That's the hard, interesting part. And weirdly, the backend engineer in me is finding the ML world's lack of standard observability patterns kind of exciting. There's a lot of room to bring engineering discipline to a field that's still maturing.
+        </p>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- Social Links Section -->
-<section id="contact">
-  <h2 class="contact-header">
-    Contact Me
-  </h2>
-  <div class="contact-icons">
-    <a href="https://www.linkedin.com/in/bikidutta" target="_blank" class="contact-link">
-      <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn" class="contact-icon-img">
-    </a>
-    <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bikidutta319@gmail.com" target="_blank" class="contact-link">
-      <img src="https://img.icons8.com/ios-filled/50/000000/gmail.png" alt="Gmail" class="contact-icon-img">
-    </a>
-    <a href="https://github.com/biki97" target="_blank" class="contact-link">
-      <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub" class="contact-icon-img">
-    </a>
-    <a href="https://www.instagram.com/duttabiki" target="_blank" class="contact-link">
-      <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="Instagram" class="contact-icon-img">
-    </a>
-  </div>
-</section>
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+    document.querySelectorAll('.project').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+    });
 
-<!-- Footer Section -->
-<footer>
-  <p>&copy; 2025 Biki Dutta. All rights reserved.</p>
-  <a href="Biki_Resume.pdf" download>Download Resume</a>
-</footer>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
 
-<script src="script.js"></script>
-</body>
-<script>
-  const phrases = ["Hello! This is Biki Dutta", "Looking for a Developer?", "Let’s Collaborate!"];
-  const typingElement = document.querySelector(".typing-effect");
-
-  let i = 0, charIndex = 0;
-
-  function type() {
-    if (charIndex < phrases[i].length) {
-      typingElement.textContent += phrases[i].charAt(charIndex);
-      charIndex++;
-      setTimeout(type, 100);
-    } else {
-      setTimeout(erase, 2000);
+    function openArticle(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
-  }
-
-  function erase() {
-    if (charIndex > 0) {
-      typingElement.textContent = phrases[i].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(erase, 50);
-    } else {
-      i = (i + 1) % phrases.length;
-      setTimeout(type, 500);
+    function closeArticle(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
     }
-  }
-
-  document.addEventListener("DOMContentLoaded", type);
-  // Create an Intersection Observer instance
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible'); // Add visible class when element enters the viewport
-        observer.unobserve(entry.target); // Stop observing the element after it becomes visible
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+        document.body.style.overflow = '';
       }
     });
-  }, {
-    threshold: 0.5 // Trigger when 50% of the card is visible
-  });
+  </script>
 
-
-</script>
+</body>
 </html>
+

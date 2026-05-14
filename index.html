@@ -1190,7 +1190,7 @@
         </div>
       </div>
 
-      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mnjwyobz" method="POST">
         <div class="form-row">
           <div class="field">
             <label for="name">Name</label>
@@ -1337,8 +1337,51 @@
         document.body.style.overflow = '';
       }
     });
+
+    // Contact form — AJAX submission (stays on page)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector('.form-submit');
+        const originalBtnHTML = submitBtn.innerHTML;
+        const originalBg = submitBtn.style.background;
+
+        submitBtn.innerHTML = 'Sending…';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.8';
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            submitBtn.innerHTML = '✓ Message sent — thank you!';
+            submitBtn.style.background = '#22C55E';
+            submitBtn.style.color = '#0E0E10';
+            contactForm.reset();
+          } else {
+            throw new Error('Submission failed');
+          }
+        } catch (err) {
+          submitBtn.innerHTML = '✗ Something went wrong — try again';
+          submitBtn.style.background = '#EF4444';
+          submitBtn.style.color = '#F6F2EA';
+        }
+
+        setTimeout(() => {
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.style.background = originalBg;
+          submitBtn.style.color = '';
+          submitBtn.style.opacity = '';
+          submitBtn.disabled = false;
+        }, 4000);
+      });
+    }
   </script>
 
 </body>
 </html>
-

@@ -1388,22 +1388,10 @@
       });
     }
 
-    // ── VISITOR COUNTER using hits.sh (working free API) ──
-    fetch('https://hits.sh/biki97.github.io.json')
-      .then(res => res.json())
-      .then(data => {
-        const count = data.total || data.count || data.value;
-        if (count) {
-          document.getElementById('vc-number').textContent = parseInt(count).toLocaleString();
-        } else {
-          document.getElementById('vc-number').textContent = '1,000+';
-        }
-      })
-      .catch(() => {
-        // Fallback — show hits badge as image if API fails
-        const vcNum = document.getElementById('vc-number');
-        vcNum.innerHTML = '<img src="https://hits.sh/biki97.github.io.svg" alt="visitors" style="height:18px;vertical-align:middle;filter:brightness(2);">';
-      });
+    // ── VISITOR COUNTER using hits.sh badge (real count, always works) ──
+    document.getElementById('vc-number').innerHTML =
+      '<img src="https://hits.sh/biki97.github.io.svg" alt="visitor count" style="height:20px; vertical-align:middle;">';
+    document.getElementById('vc-label').textContent = '';
   </script>
 
 </body>

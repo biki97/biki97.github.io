@@ -955,7 +955,7 @@
       <div class="visitor-counter">
         <span class="vc-dot"></span>
         <span id="vc-number">...</span>
-        <span>visitors from around the world</span>
+        <span id="vc-label">visitors from around the world</span>
       </div>
 
     </div>
@@ -1388,14 +1388,21 @@
       });
     }
 
-    // ── VISITOR COUNTER using CountAPI ──
-    fetch('https://api.countapi.xyz/hit/biki97.github.io/visits')
+    // ── VISITOR COUNTER using hits.sh (working free API) ──
+    fetch('https://hits.sh/biki97.github.io.json')
       .then(res => res.json())
       .then(data => {
-        document.getElementById('vc-number').textContent = data.value.toLocaleString();
+        const count = data.total || data.count || data.value;
+        if (count) {
+          document.getElementById('vc-number').textContent = parseInt(count).toLocaleString();
+        } else {
+          document.getElementById('vc-number').textContent = '1,000+';
+        }
       })
       .catch(() => {
-        document.getElementById('vc-number').textContent = '1,000+';
+        // Fallback — show hits badge as image if API fails
+        const vcNum = document.getElementById('vc-number');
+        vcNum.innerHTML = '<img src="https://hits.sh/biki97.github.io.svg" alt="visitors" style="height:18px;vertical-align:middle;filter:brightness(2);">';
       });
   </script>
 

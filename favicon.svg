@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0E0E10"/>
-  <rect x="8" y="8" width="48" height="48" rx="10" fill="#E8743C" transform="rotate(-4 32 32)"/>
-  <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, serif" font-size="38" font-weight="700" font-style="italic" fill="#0E0E10" transform="rotate(-4 32 32)">B</text>
+  <rect width="64" height="64" rx="14" fill="#190019"/>
+  <g transform="rotate(-4 32 32)">
+    <rect x="14.5" y="14.5" width="39" height="39" rx="10" fill="#854f6c"/>
+    <rect x="11" y="11" width="39" height="39" rx="10" fill="#dfb6b2" stroke="#FBE4D8" stroke-width="2.5"/>
+    <g transform="translate(22.676,44.000) scale(0.01534,-0.01534)" fill="#190019">
+      <path d="M78 0V1760H555Q747 1760 834.5 1666.5Q922 1573 922 1358V1281Q922 1157 877.5 1080.0Q833 1003 742 979Q861 949 901.5 838.5Q942 728 942 569Q942 398 910.0 270.0Q878 142 794.0 71.0Q710 0 555 0ZM422 1097H494Q543 1097 557.0 1135.0Q571 1173 571 1226V1403Q571 1488 496 1488H422ZM457 310Q594 310 594 440V660Q594 735 571.5 778.5Q549 822 487 822H422V312Q444 310 457 310Z"/>
+    </g>
+  </g>
 </svg>
